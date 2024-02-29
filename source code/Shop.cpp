@@ -129,21 +129,7 @@
   void Shop::leaveShop( int customerId, int barberId )
   {
       pthread_mutex_lock(&mutex1);
-      printf("customer[%i]:   wait for barber[%i] to be done with hair-cut.\n", customerId, barberId);
-  
-      while (customers[customerId].myBarber != -1)
-      {
-          //waiting for the haircut finishing signal from the barber in function byeCustomer()
-          pthread_cond_wait(&customers[customerId].customerCond, &mutex1); //
-      }
-          
-      
-      //pay to the barber and signal barber appropriately
-      printf("customer[%i]:   pay to barber[%i]\n", customerId, barberId);
-      pthread_cond_signal(&(getBarber(barberId) -> paid_cond));
-  
-  
-      printf("customer[%i]:   says good-bye to barber[%i]\n", customerId, barberId);
+//////////////////////////////////////////////////////////delete
   
       pthread_mutex_unlock(&mutex1);
   }
